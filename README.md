@@ -7,7 +7,7 @@
 <div align="center">
   
 
-# Comming Soon
+# Coming Soon
   [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/RatScale)](https://chrome.google.com/webstore/detail/ratscale-by-ratlabs/coming-soon)
   [![Edge Add-on](https://img.shields.io/badge/Edge%20Add--on-v1.0.0-blue)](https://microsoftedge.microsoft.com/addons/detail/ratscale-by-ratlabs/coming-soon)
 </div>

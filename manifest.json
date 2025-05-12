@@ -43,7 +43,7 @@
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "author": "RatLabs",
-  "homepage_url": "https://github.com/labrat-0/RatScale",
+  "homepage_url": "https://github.com/labrat-0/RatScale_1.1.0",
   "minimum_chrome_version": "88",
   "minimum_edge_version": "88",
   "short_name": "RatScale",
