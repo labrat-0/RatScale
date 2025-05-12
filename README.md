@@ -19,7 +19,6 @@ A modern browser extension for developers, designers, and app creators to quickl
 
 - ⚡ **Instant Icon Generation**: Resize images into 14 standard icon sizes from 16×16 to 1024×1024
 - 📦 **One-Click Export**: Package all sizes as a ready-to-use ZIP file
-- 🖼️ **Preview Generated Icons**: See how your icons look at different sizes
 - 🎨 **Modern UI**: Clean, intuitive interface with smooth animations
 - 💻 **Cross-Browser Compatible**: Works on Chrome, Edge, and other Chromium-based browsers
 
@@ -81,7 +80,6 @@ RatScale automatically generates the following icon sizes for comprehensive plat
 
 After creating your icon pack, you can:
 
-- **Preview Generated Icons**: See how your icons look at all sizes
 - **Process Another Image**: Start over with a new source image
 - **Access ZIP File**: The download contains all icon sizes in PNG format
 
