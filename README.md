@@ -1,7 +1,11 @@
 # RatScale by RatLabs
 
 <div align="center">
-  <img src="icons/icon128.png" alt="RatScale Logo" width="128" height="128">
+  
+![RatScale Screenshot](https://github.com/labrat-0/RatScale_1.1.0/blob/main/icons/icon_120x120.png)
+</div>
+<div align="center">
+  
 
   [![GitHub license](https://img.shields.io/github/license/labrat-0/RatScale)](https://github.com/labrat-0/RatScale/blob/main/LICENSE)
   [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/RatScale)](https://chrome.google.com/webstore/detail/ratscale-by-ratlabs/coming-soon)
@@ -10,7 +14,6 @@
 
 A modern browser extension for developers, designers, and app creators to quickly generate complete icon sets for their applications, extensions, and websites.
 
-![RatScale Screenshot](https://raw.githubusercontent.com/labrat-0/RatScale/main/screenshots/ratscale-screenshot.jpg)
 
 ## 🚀 Features
 
