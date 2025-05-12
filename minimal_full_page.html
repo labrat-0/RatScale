@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RatScale</title>
+  <link rel="icon" href="icons/icon_32x32.png" type="image/png">
+  
+  <!-- PWA and cross-browser support -->
+  <meta name="description" content="Create beautiful icon sets for apps and extensions with multiple export sizes">
+  <link rel="manifest" href="pwa-manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  
+  <!-- iOS-specific PWA tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="RatScale">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  
+  <!-- Microsoft Edge and IE tags -->
+  <meta name="msapplication-TileColor" content="#1a1a1a">
+  <meta name="msapplication-TileImage" content="icons/icon_144x144.png">
+  
+  <style>
+    :root {
+      --primary: #ff3333;
+      --primary-dark: #cc2222;
+      --primary-light: #ff6666;
+      --secondary: #ff9999;
+      --dark: #121212;
+      --mid: #222222;
+      --text: #f5f5f5;
+      --text-muted: #aaaaaa;
+      --success: #77dd77;
+      --warning: #ffaa66;
+      --error: #ff5555;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 9999px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
+      --transition: all 0.2s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      padding: var(--space-md);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      line-height: 1.4;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background-color: var(--mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-top: var(--space-md);
+    }
+    
+    .app-header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      padding: var(--space-md);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .app-title {
+      margin-left: var(--space-sm);
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .app-content {
+      padding: var(--space-md);
+    }
+    
+    .upload-section {
+      text-align: center;
+      margin-bottom: var(--space-md);
+    }
+    
+    .section-title {
+      font-size: 16px;
+      margin-bottom: var(--space-sm);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+    
+    .drop-area {
+      border: 2px dashed var(--primary);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: rgba(255, 51, 51, 0.05);
+    }
+    
+    .drop-area:hover, .drop-area.dragging {
+      background-color: rgba(255, 51, 51, 0.1);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .drop-area p {
+      margin-bottom: var(--space-sm);
+      font-size: 16px;
+    }
+    
+    .drop-area .icon {
+      font-size: 32px;
+      margin-bottom: var(--space-xs);
+      color: var(--primary);
+    }
+    
+    .drop-area .formats {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+    }
+    
+    .file-name {
+      margin-top: var(--space-sm);
+      font-weight: bold;
+      word-break: break-all;
+      max-width: 100%;
+      display: inline-block;
+      font-size: 14px;
+    }
+    
+    .progress-container {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+      height: 6px;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    .status {
+      font-size: 14px;
+      margin-bottom: var(--space-md);
+      padding: var(--space-xs);
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+    
+    .platform-selector {
+      margin-bottom: var(--space-md);
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+    }
+    
+    .platform-selector h3 {
+      font-size: 16px;
+      margin-bottom: var(--space-sm);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .platform-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-xs);
+      cursor: pointer;
+      padding: var(--space-xs);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    
+    .platform-option:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .platform-checkbox {
+      margin-right: var(--space-sm);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--text-muted);
+      border-radius: 3px;
+      background-color: transparent;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .platform-checkbox:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .platform-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .action-button {
+      display: block;
+      width: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      padding: var(--space-sm) var(--space-md);
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: var(--space-md);
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    
+    .action-button:not(:disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 15px rgba(204, 34, 34, 0.3);
+    }
+    
+    .action-button:disabled {
+      background: linear-gradient(90deg, #555 0%, #444 100%);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    
+    .footer {
+      margin-top: var(--space-md);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-bottom: var(--space-md);
+    }
+    
+    .platforms-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xs);
+    }
+    
+    .file-size-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    
+    .processing-info {
+      display: none;
+      margin-top: 12px;
+      padding: 8px;
+      background: rgba(255, 170, 102, 0.15);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+    
+    .memory-tip {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    
+    /* Browser-specific styles */
+    .safari-note {
+      display: none;
+      margin-top: 6px;
+      font-size: 11px;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    
+    /* Show Safari-specific notes when in Safari */
+    html.is-safari .safari-note {
+      display: block;
+    }
+    
+    /* Mobile-specific styles */
+    .mobile-upload-btn {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    
+    .mobile-gallery-btn {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 13px;
+      margin: var(--space-sm) auto;
+      border: none;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    
+    .mobile-gallery-btn:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0;
+        margin-top: 0;
+        max-width: 100%;
+        border-radius: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      body {
+        padding: 0;
+      }
+      
+      .app-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: var(--space-sm);
+      }
+      
+      .app-header {
+        padding: var(--space-sm) var(--space-md);
+      }
+      
+      .mobile-gallery-btn {
+        display: inline-block;
+      }
+      
+      .platforms-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .drop-area {
+        min-height: 100px;
+      }
+      
+      .drop-area .formats,
+      .file-size-note {
+        font-size: 10px;
+      }
+      
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .app-title {
+        font-size: 18px;
+      }
+    }
+    
+    /* Specifically for Touch devices */
+    @media (hover: none) {
+      .mobile-gallery-btn {
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <div class="logo-container">
+        <img src="icons/logo.png" alt="RatScale Logo" class="logo">
+        <span class="app-title">RatScale</span>
+      </div>
+    </header>
+    
+    <div class="app-content">
+      <div class="upload-section">
+        <h2 class="section-title">Select Image</h2>
+        
+        <!-- For mobile, add a visible button to open gallery -->
+        <button id="mobileGalleryBtn" class="mobile-gallery-btn">
+          Select from Gallery
+        </button>
+        
+        <!-- For accessibility on mobile, add a hidden input -->
+        <input type="file" id="mobileUpload" class="mobile-upload" accept="image/*" style="display:none">
+        
+        <!-- Drop area as primary method -->
+        <div id="dropArea" class="drop-area">
+          <div class="icon">⬇️</div>
+          <p>Drop image here</p>
+          <!-- We'll create an overlay that works on mobile -->
+          <label for="mobileUpload" style="position:absolute; width:100%; height:100%; top:0; left:0; cursor:pointer;">
+            <span style="display:none">Select file</span>
+          </label>
+          <div id="fileName" class="file-name"></div>
+          <div class="formats">PNG, JPG, JPEG, WebP, GIF, SVG</div>
+          <div class="file-size-note">Max 5MB</div>
+        </div>
+        <div class="safari-note">In Safari, files open in a new tab for download</div>
+      </div>
+      
+      <div id="platformSelector" class="platform-selector">
+        <h3>Target Platforms</h3>
+        <!-- Platform options will be added by JavaScript -->
+      </div>
+      
+      <div class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div id="status" class="status">Drop or select an image to begin</div>
+      <div id="processingInfo" class="processing-info">
+        Processing image. Please wait...
+        <div class="memory-tip">For best results with large images, close other browser tabs</div>
+      </div>
+      
+      <button id="resizeButton" class="action-button" disabled>
+        Generate Icon Pack
+      </button>
+    </div>
+    
+    <div class="footer">
+      <p>© RatLabs</p>
+    </div>
+  </div>
+  
+  <!-- Add browser detection script -->
+  <script>
+    // Detect Safari and add class to HTML
+    (function detectBrowser() {
+      const ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf('safari') > -1 && ua.indexOf('chrome') === -1) {
+        document.documentElement.classList.add('is-safari');
+      }
+      
+      // Detect mobile devices
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.documentElement.classList.add('is-mobile');
+      }
+    })();
+  </script>
+  
+  <!-- Load scripts -->
+  <script src="jszip.min.js"></script>
+  <script src="minimal_full_page.js"></script>
+</body>
+</html> 

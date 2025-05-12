@@ -1,0 +1,181 @@
+{
+  "name": "RatScale",
+  "short_name": "RatScale",
+  "description": "Create beautiful icon sets for apps and extensions with multiple export sizes. Works on desktop and mobile.",
+  "start_url": "./minimal_full_page.html",
+  "display": "standalone",
+  "theme_color": "#cc2222",
+  "background_color": "#121212",
+  "orientation": "portrait",
+  "scope": "./",
+  "id": "/RatScale/",
+  "categories": ["utilities", "productivity", "developer tools", "image tools"],
+  "screenshots": [
+    {
+      "src": "icons/screenshot-desktop.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "RatScale on desktop"
+    },
+    {
+      "src": "icons/screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png", 
+      "platform": "narrow",
+      "label": "RatScale on mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "RatScale",
+      "url": "./minimal_full_page.html",
+      "icons": [{ "src": "icons/icon_192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "icons": [
+    {
+      "src": "icons/icon_16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_40x40.png",
+      "sizes": "40x40",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_44x44.png",
+      "sizes": "44x44",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_50x50.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_58x58.png",
+      "sizes": "58x58",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_60x60.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_80x80.png",
+      "sizes": "80x80",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_87x87.png",
+      "sizes": "87x87",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_120x120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_168x168.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon_256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon_1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple-touch-icon"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "file_handlers": [
+    {
+      "action": "./minimal_full_page.html",
+      "accept": {
+        "image/*": [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]
+      }
+    }
+  ]
+} 
