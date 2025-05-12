@@ -914,6 +914,17 @@ h1::after {
   to { opacity: 1; }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3D(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3D(0, 0, 0);
+  }
+}
+
 @keyframes fadeInDown {
   from { 
     opacity: 0;
@@ -946,7 +957,7 @@ h1::after {
   100% { transform: translate3D(100%, 0, 0); }
 }
 
-/* Simplified pulse animation for better performance */
+/* Performance-optimized animations */
 @keyframes pulse {
   0% { transform: scale(1); box-shadow: 0 0 0 rgba(75, 120, 255, 0); }
   50% { transform: scale(1.01); box-shadow: 0 0 20px rgba(75, 120, 255, 0.4); }
@@ -959,16 +970,16 @@ h1::after {
   100% { opacity: 0.5; }
 }
 
-.pulse {
-  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Advanced animations */
 @keyframes smoothFloat {
   0%, 100% { transform: translate3D(0, 0, 0); }
   50% { transform: translate3D(0, -8px, 0); }
 }
 
+.pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Advanced animations */
 @keyframes gentlePulse {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.02); opacity: 0.9; }
