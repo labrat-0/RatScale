@@ -874,6 +874,7 @@ h1::after {
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
+  filter: grayscale(100%) brightness(1.5);
 }
 
 .github-link:hover {
@@ -883,6 +884,7 @@ h1::after {
 .github-link:hover .github-icon {
   transform: rotate(360deg);
   color: var(--primary);
+  filter: grayscale(0%);
 }
 
 /* Overlay */
