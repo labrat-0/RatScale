@@ -21,6 +21,7 @@ A modern browser extension for developers, designers, and app creators to quickl
 - 📦 **One-Click Export**: Package all sizes as a ready-to-use ZIP file
 - 🎨 **Modern UI**: Clean, intuitive interface with smooth animations
 - 💻 **Cross-Browser Compatible**: Works on Chrome, Edge, and other Chromium-based browsers
+- 🎯 **Platform Targeting**: Generate icons specifically for Android, iOS, Windows, macOS, Chrome, Firefox, and PWA platforms
 
 ## 📋 Included Icon Sizes
 
@@ -59,7 +60,7 @@ RatScale automatically generates the following icon sizes for comprehensive plat
 
 1. Download or clone this repository:
    ```bash
-   git clone https://github.com/labrat-0/RatScale.git
+   git clone https://github.com/labrat-0/RatScale_1.1.0.git
    ```
 2. Open your browser's extension management page:
    - Chrome: `chrome://extensions`
@@ -72,16 +73,17 @@ RatScale automatically generates the following icon sizes for comprehensive plat
 
 1. Click the RatScale icon in your browser toolbar
 2. Drag and drop an image onto the interface (or click to select)
-3. Click "Download" to process the image
-4. Save the ZIP file when prompted
-5. Use the generated icons in your project
+3. Select your target platforms (Android, iOS, Windows, macOS, Chrome, Firefox, PWA)
+4. Click "Download" to process the image
+5. Save the ZIP file when prompted
+6. Use the generated icons in your project
 
 ## ✨ After Processing
 
 After creating your icon pack, you can:
 
 - **Process Another Image**: Start over with a new source image
-- **Access ZIP File**: The download contains all icon sizes in PNG format
+- **Access ZIP File**: The download contains all icon sizes in PNG format, organized by platform
 
 ## 🌐 Browser Compatibility
 
@@ -96,12 +98,17 @@ After creating your icon pack, you can:
 ```
 RatScale/
 ├── icons/              # Extension icons
+├── platform_icons/     # Platform-specific icons
 ├── background.js       # Background service worker
 ├── full_page.html      # Main extension UI
+├── minimal_full_page.html # Minimal UI version
 ├── full_page.js        # Core functionality
+├── ratscale.css        # Styling
+├── animations.js       # Animation effects
 ├── jszip.min.js        # ZIP file creation library
 ├── manifest.json       # Extension manifest
 ├── PRIVACY.md          # Privacy policy
+├── LICENSE             # MIT License
 └── README.md           # This file
 ```
 
@@ -123,6 +130,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Mick Donahue (labrat)**
 
 - GitHub: [@labrat-0](https://github.com/labrat-0)
+- Repository: [RatScale_1.1.0](https://github.com/labrat-0/RatScale_1.1.0)
 
 ## 🙏 Acknowledgments
 
@@ -138,7 +146,13 @@ RatScale respects your privacy. All image processing happens locally in your bro
 
 <div align="center">
   <p>Made with ❤️ by labrat</p>
-  <a href="https://github.com/labrat-0">
-    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30" height="30" alt="GitHub">
-  </a>
+  
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <a href="https://github.com/labrat-0" title="GitHub">
+      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30" height="30" alt="GitHub">
+    </a>
+    <a href="https://buymeacoffee.com/labrat" title="Buy Me A Coffee">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="130" alt="Buy Me A Coffee">
+    </a>
+  </div>
 </div> 
