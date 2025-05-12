@@ -1206,12 +1206,19 @@ body.evil-mode .ratshell-logo img {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .platforms-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: var(--space-md);
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--space-sm);
 }
 
 .platform-option {
@@ -1219,7 +1226,7 @@ body.evil-mode .ratshell-logo img {
   align-items: center;
   gap: var(--space-sm);
   cursor: pointer;
-  padding: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   background-color: var(--dark-mid);
@@ -1229,6 +1236,7 @@ body.evil-mode .ratshell-logo img {
 .platform-option:hover {
   background-color: var(--surface);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 .platform-checkbox {
@@ -1241,7 +1249,7 @@ body.evil-mode .ratshell-logo img {
   outline: none;
   cursor: pointer;
   position: relative;
-  margin-right: var(--space-sm);
+  margin-right: var(--space-xs);
   transition: all var(--transition-fast);
 }
 
@@ -1261,13 +1269,70 @@ body.evil-mode .ratshell-logo img {
   line-height: 1;
 }
 
+.platform-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.platform-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.platform-name {
+  flex: 1;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
 .size-count {
   font-size: 12px;
   color: var(--text-muted);
-  margin-left: auto;
   background-color: var(--dark);
   padding: 2px var(--space-sm);
   border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+/* Select All option styling */
+.platform-option.select-all {
+  grid-column: 1 / -1;
+  background-color: rgba(75, 120, 255, 0.1);
+  border: 1px solid rgba(75, 120, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.platform-option.select-all:hover {
+  background-color: rgba(75, 120, 255, 0.15);
+}
+
+/* Evil mode support */
+body.evil-mode .platform-option.select-all {
+  background-color: rgba(156, 0, 0, 0.1);
+  border-color: rgba(156, 0, 0, 0.2);
+}
+
+body.evil-mode .platform-option.select-all:hover {
+  background-color: rgba(156, 0, 0, 0.15);
+}
+
+body.evil-mode .platform-checkbox:checked {
+  background-color: var(--evil-primary);
+  border-color: var(--evil-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .platform-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }
 
 /* Live preview section */

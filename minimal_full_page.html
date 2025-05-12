@@ -231,6 +231,7 @@
       background-color: rgba(255, 255, 255, 0.05);
       padding: var(--space-md);
       border-radius: var(--radius-md);
+      border-left: 3px solid var(--primary);
     }
     
     .platform-selector h3 {
@@ -243,34 +244,47 @@
       text-align: center;
     }
     
+    .platforms-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--space-sm);
+    }
+    
     .platform-option {
       display: flex;
       align-items: center;
       margin-bottom: var(--space-xs);
       cursor: pointer;
-      padding: var(--space-xs);
+      padding: var(--space-xs) var(--space-sm);
       border-radius: var(--radius-sm);
       transition: var(--transition);
+      gap: var(--space-sm);
+      background-color: rgba(0, 0, 0, 0.2);
     }
     
     .platform-option:hover {
       background-color: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
     }
     
     .platform-checkbox {
-      margin-right: var(--space-sm);
-      -webkit-appearance: none;
-      -moz-appearance: none;
       appearance: none;
+      -webkit-appearance: none;
       width: 16px;
       height: 16px;
+      border-radius: 4px;
       border: 2px solid var(--text-muted);
-      border-radius: 3px;
-      background-color: transparent;
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
       outline: none;
+      cursor: pointer;
+      position: relative;
+      margin-right: var(--space-xs);
+      transition: all var(--transition-fast);
     }
     
     .platform-checkbox:checked {
@@ -279,15 +293,57 @@
     }
     
     .platform-checkbox:checked::after {
-      content: '';
+      content: '✓';
       position: absolute;
-      width: 6px;
-      height: 6px;
-      background-color: white;
-      border-radius: 50%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      color: white;
+      font-size: 11px;
+      line-height: 1;
+    }
+    
+    .platform-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    
+    .platform-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    .platform-name {
+      flex: 1;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    
+    .size-count {
+      font-size: 11px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: var(--radius-pill);
+      flex-shrink: 0;
+    }
+    
+    /* Select All option styling */
+    .platform-option.select-all {
+      background-color: rgba(255, 51, 51, 0.07);
+      border: 1px solid rgba(255, 51, 51, 0.15);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .platform-option.select-all:hover {
+      background-color: rgba(255, 51, 51, 0.12);
     }
     
     .action-button {
@@ -359,12 +415,6 @@
     .github-link:hover .github-icon {
       transform: rotate(360deg);
       filter: grayscale(0%);
-    }
-    
-    .platforms-wrapper {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-xs);
     }
     
     .file-size-note {

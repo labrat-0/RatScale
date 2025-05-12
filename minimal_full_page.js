@@ -693,12 +693,68 @@ function initApp() {
     if (!platformSelector) return;
     
     // Clear existing content and add title
-    platformSelector.innerHTML = '<h3>Select Target Platforms</h3>';
+    platformSelector.innerHTML = '<h3>Target Platforms</h3>';
     
     try {
       // Create wrapper
       const wrapper = document.createElement('div');
       wrapper.className = 'platforms-wrapper';
+      
+      // Add select all option
+      const selectAllLabel = document.createElement('label');
+      selectAllLabel.className = 'platform-option select-all';
+      
+      const selectAllCheckbox = document.createElement('input');
+      selectAllCheckbox.type = 'checkbox';
+      selectAllCheckbox.id = 'selectAllPlatforms';
+      selectAllCheckbox.className = 'platform-checkbox';
+      
+      // Check if all platforms are currently selected
+      const allPlatformsSelected = Object.keys(SIZE_RULES).length === selectedPlatforms.length &&
+        Object.keys(SIZE_RULES).every(platform => selectedPlatforms.includes(platform));
+      
+      selectAllCheckbox.checked = allPlatformsSelected;
+      
+      // Handle Select All checkbox change
+      selectAllCheckbox.addEventListener('change', () => {
+        const platformCheckboxes = document.querySelectorAll('.platform-checkbox:not(#selectAllPlatforms)');
+        
+        if (selectAllCheckbox.checked) {
+          // Select all platforms
+          selectedPlatforms = Object.keys(SIZE_RULES);
+          platformCheckboxes.forEach(checkbox => {
+            checkbox.checked = true;
+          });
+        } else {
+          // Deselect all platforms
+          selectedPlatforms = [];
+          platformCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+          });
+        }
+      });
+      
+      const selectAllText = document.createElement('span');
+      selectAllText.textContent = 'Select All Platforms';
+      selectAllText.style.fontWeight = 'bold';
+      
+      // Add total sizes badge
+      const totalSizes = new Set(
+        Object.values(SIZE_RULES).flat()
+      ).size;
+      
+      const totalBadge = document.createElement('span');
+      totalBadge.className = 'size-count';
+      totalBadge.textContent = `${totalSizes} sizes`;
+      
+      selectAllLabel.appendChild(selectAllCheckbox);
+      selectAllLabel.appendChild(selectAllText);
+      selectAllLabel.appendChild(totalBadge);
+      wrapper.appendChild(selectAllLabel);
+      
+      // Create platform grid
+      const platformGrid = document.createElement('div');
+      platformGrid.className = 'platform-grid';
       
       // Add each platform option
       Object.keys(SIZE_RULES).forEach(platform => {
@@ -718,16 +774,43 @@ function initApp() {
           } else {
             selectedPlatforms = selectedPlatforms.filter(p => p !== platform);
           }
+          
+          // Update Select All checkbox state
+          const allChecked = Object.keys(SIZE_RULES).every(p => 
+            selectedPlatforms.includes(p)
+          );
+          selectAllCheckbox.checked = allChecked;
         });
         
+        // Create icon container
+        const iconContainer = document.createElement('div');
+        iconContainer.className = 'platform-icon';
+        
+        // Create platform icon
+        const icon = document.createElement('img');
+        icon.src = `platform_icons/${platform}.svg`;
+        icon.alt = platform;
+        icon.width = 16;
+        icon.height = 16;
+        iconContainer.appendChild(icon);
+        
         const platformName = document.createElement('span');
+        platformName.className = 'platform-name';
         platformName.textContent = platform.charAt(0).toUpperCase() + platform.slice(1);
         
+        // Add icon count badge
+        const countBadge = document.createElement('span');
+        countBadge.className = 'size-count';
+        countBadge.textContent = `${SIZE_RULES[platform].length}`;
+        
         label.appendChild(checkbox);
+        label.appendChild(iconContainer);
         label.appendChild(platformName);
-        wrapper.appendChild(label);
+        label.appendChild(countBadge);
+        platformGrid.appendChild(label);
       });
       
+      wrapper.appendChild(platformGrid);
       platformSelector.appendChild(wrapper);
     } catch (error) {
       console.error(`Error setting up platform selector: ${error.message}`);

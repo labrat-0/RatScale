@@ -516,8 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create title
     const title = document.createElement('h3');
-    title.textContent = 'Select Target Platforms';
-    title.style.marginBottom = '10px';
+    title.textContent = 'Target Platforms';
     platformSelector.appendChild(title);
     
     // Create platform options
@@ -574,17 +573,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const totalBadge = document.createElement('span');
     totalBadge.className = 'size-count';
-    totalBadge.textContent = `${totalSizes} unique sizes`;
+    totalBadge.textContent = `${totalSizes} sizes`;
     
     selectAllLabel.appendChild(selectAllCheckbox);
     selectAllLabel.appendChild(selectAllText);
     selectAllLabel.appendChild(totalBadge);
     platformsWrapper.appendChild(selectAllLabel);
     
-    // Add separator
-    const separator = document.createElement('div');
-    separator.className = 'platform-separator';
-    platformsWrapper.appendChild(separator);
+    // Add platform grid
+    const platformGrid = document.createElement('div');
+    platformGrid.className = 'platform-grid';
     
     // Add each platform option
     Object.keys(SIZE_RULES).forEach(platform => {
@@ -617,20 +615,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       
+      // Create icon container
+      const iconContainer = document.createElement('div');
+      iconContainer.className = 'platform-icon';
+      
+      // Create platform icon
+      const icon = document.createElement('img');
+      icon.src = `platform_icons/${platform}.svg`;
+      icon.alt = platform;
+      icon.width = 16;
+      icon.height = 16;
+      iconContainer.appendChild(icon);
+      
       const platformName = document.createElement('span');
+      platformName.className = 'platform-name';
       platformName.textContent = platform.charAt(0).toUpperCase() + platform.slice(1);
       
       // Add icon count badge
       const countBadge = document.createElement('span');
       countBadge.className = 'size-count';
-      countBadge.textContent = `${SIZE_RULES[platform].length} sizes`;
+      countBadge.textContent = `${SIZE_RULES[platform].length}`;
       
       label.appendChild(checkbox);
+      label.appendChild(iconContainer);
       label.appendChild(platformName);
       label.appendChild(countBadge);
-      platformsWrapper.appendChild(label);
+      platformGrid.appendChild(label);
     });
     
+    platformsWrapper.appendChild(platformGrid);
     platformSelector.appendChild(platformsWrapper);
   }
   
