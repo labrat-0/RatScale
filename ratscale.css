@@ -837,6 +837,10 @@ h1::after {
   opacity: 0;
   animation: fadeIn 0.8s 2s forwards;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .footer::before {
@@ -851,28 +855,34 @@ h1::after {
   animation: expandWidth 2s ease-in-out forwards 2.5s;
 }
 
+.footer p {
+  margin: 0;
+}
+
 .github-link {
   display: inline-flex;
   align-items: center;
-  margin-top: var(--space-sm);
   color: var(--secondary);
   text-decoration: none;
   transition: all var(--transition-fast);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-pill);
-}
-
-.github-link:hover {
-  color: var(--primary);
-  background-color: rgba(255, 51, 51, 0.1);
-  transform: translateY(-2px);
+  background-color: var(--dark-mid);
 }
 
 .github-icon {
   width: 24px;
   height: 24px;
-  margin-right: var(--space-sm);
-  filter: drop-shadow(0 0 2px rgba(255, 51, 51, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.github-link:hover {
+  background-color: var(--surface);
+}
+
+.github-link:hover .github-icon {
+  transform: rotate(360deg);
+  color: var(--primary);
 }
 
 /* Overlay */
