@@ -174,23 +174,47 @@
 
     /* Custom scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
     }
     
     ::-webkit-scrollbar-track {
-      background: var(--dark-mid);
+      background: rgba(34, 34, 34, 0.6);
       border-radius: var(--radius-pill);
+      margin: 4px;
+      border: 1px solid rgba(75, 120, 255, 0.05);
     }
     
     ::-webkit-scrollbar-thumb {
-      background: var(--primary);
+      background: linear-gradient(45deg, var(--primary) 0%, var(--primary-dark) 100%);
       border-radius: var(--radius-pill);
       transition: all var(--transition-fast);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
     
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-light);
+      background: linear-gradient(45deg, var(--primary-light) 0%, var(--primary) 100%);
+      box-shadow: 0 0 8px rgba(255, 51, 51, 0.4);
+    }
+    
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+    
+    /* Evil mode scrollbar styles */
+    body.evil-mode ::-webkit-scrollbar-track {
+      background: rgba(12, 12, 12, 0.8);
+      border: 1px solid rgba(156, 0, 0, 0.1);
+    }
+    
+    body.evil-mode ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, var(--evil-primary) 0%, var(--evil-primary-dark) 100%);
+      box-shadow: 0 0 5px rgba(156, 0, 0, 0.3);
+    }
+    
+    body.evil-mode ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, var(--evil-primary-light) 0%, var(--evil-primary) 100%);
+      box-shadow: 0 0 8px rgba(204, 0, 0, 0.5);
     }
     
     /* Main container */
