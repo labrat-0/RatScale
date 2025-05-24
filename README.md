@@ -7,7 +7,6 @@
 <div align="center">
   
 
-# Coming Soon
 
 [![Available on Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Available-brightgreen?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/ratscale/hechkkfnpbfdbjbdnnbiejjbbpaopege)
 
