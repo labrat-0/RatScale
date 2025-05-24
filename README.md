@@ -8,11 +8,6 @@
   
 
 
-[![Available on Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Available-brightgreen?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/ratscale/hechkkfnpbfdbjbdnnbiejjbbpaopege)
-
-[![Available on Edge Add-on](https://img.shields.io/badge/Edge%20Add--on-Coming%20Soon-lightgrey?logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/ratscale/poeedkdmkapaclcknemkphbfjoicpdjn)
-
-
 A modern browser extension for developers, designers, and app creators to quickly generate complete icon sets for their applications, extensions, and websites.
 
 
