@@ -10,7 +10,7 @@
 
 [![Available on Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Available-brightgreen?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/ratscale/hechkkfnpbfdbjbdnnbiejjbbpaopege)
 
-[![Available on Edge Add-on](https://img.shields.io/badge/Edge%20Add--on-Coming%20Soon-lightgrey?logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/ratscale-by-ratlabs/coming-soon)
+[![Available on Edge Add-on](https://img.shields.io/badge/Edge%20Add--on-Coming%20Soon-lightgrey?logo=microsoft-edge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/ratscale/poeedkdmkapaclcknemkphbfjoicpdjn)
 
 
 A modern browser extension for developers, designers, and app creators to quickly generate complete icon sets for their applications, extensions, and websites.
@@ -53,7 +53,7 @@ RatScale automatically generates the following icon sizes for comprehensive plat
 
 ### Microsoft Edge Add-ons
 
-1. Visit the [Edge Add-on page](https://microsoftedge.microsoft.com/addons/detail/ratscale-by-ratlabs/coming-soon)
+1. Visit the [Edge Add-on page](https://microsoftedge.microsoft.com/addons/detail/ratscale/poeedkdmkapaclcknemkphbfjoicpdjn)
 2. Click "Get" to install
 3. The extension will be available in your browser toolbar
 
