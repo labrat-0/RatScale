@@ -1,4 +1,6 @@
-# RatScale by RatLabs
+# VIBE CODED via Cursor
+## Take it and pick apart :)
+
 
 <div align="center">
   
