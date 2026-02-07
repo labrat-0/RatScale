@@ -1,4 +1,4 @@
-# VIBE CODED via Cursor
+# >>
 ## Take it and pick apart :)
 
 
